@@ -13,7 +13,7 @@ import es.salesianos.model.User;
 
 public class Repository {
 	
-	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test";
+	private static final String jdbcUrl = "jdbc:h2:file:./src/main/resources/test.mv.db";
 	ConnectionManager manager = new ConnectionH2();
 
 	public User search(User userFormulario) {
@@ -70,6 +70,24 @@ public class Repository {
 			preparedStatement.setString(1, userFormulario.getName());
 			preparedStatement.setString(2, userFormulario.getCourse());
 			preparedStatement.setDate(3, new java.sql.Date(userFormulario.getDateOfBirth().getTime()));
+			preparedStatement.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}finally {
+			close(preparedStatement);
+		}
+		
+		
+		manager.close(conn);
+	}
+	
+	public void delete(String userFormulario) {
+		Connection conn = manager.open(jdbcUrl);
+		PreparedStatement preparedStatement = null;
+		try {
+			preparedStatement = conn.prepareStatement("DELETE FROM USER WHERE name=?");
+			preparedStatement.setString(1, userFormulario);
 			preparedStatement.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

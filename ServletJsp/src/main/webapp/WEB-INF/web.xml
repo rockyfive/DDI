@@ -16,6 +16,16 @@
     </servlet>
     
     <servlet>
+        <servlet-name>ComebackServlet</servlet-name>
+        <servlet-class>es.salesianos.servlet.ComebackServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>DeleteItem</servlet-name>
+        <servlet-class>es.salesianos.servlet.DeleteItem</servlet-class>
+    </servlet>
+    
+    <servlet>
         <servlet-name>listado</servlet-name>
         <servlet-class>es.salesianos.servlet.ListadoServlet</servlet-class>
     </servlet>
@@ -28,6 +38,16 @@
     <servlet-mapping>
         <servlet-name>WelcomeServlet</servlet-name>
         <url-pattern>welcome</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ComebackServlet</servlet-name>
+        <url-pattern>back</url-pattern>
+    </servlet-mapping>
+    
+        <servlet-mapping>
+        <servlet-name>DeleteItem</servlet-name>
+        <url-pattern>delete</url-pattern>
     </servlet-mapping>
     
     

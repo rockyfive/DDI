@@ -32,6 +32,11 @@ public class Service {
 			repository.update(userFormulario);
 		}
 	}
+	
+	public void deleteUser(String userFormulario) {
+			repository.delete(userFormulario);
+		}
+	
 
 	public void calculateAgeAndAddIntoRequest(HttpServletRequest req, Date date) {
 		Integer yearNac = converter.getAge(date);
